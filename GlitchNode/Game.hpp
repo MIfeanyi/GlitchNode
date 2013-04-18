@@ -6,6 +6,9 @@
 
 using namespace std;
 
+
+#include "node.hpp"
+
 int UpdateMenu(sf::RenderWindow &App)
 {
 
@@ -17,6 +20,7 @@ int UpdateMenu(sf::RenderWindow &App)
 
     while(Running)
     {
+        //if(Input.IsKeyDown())
         if(Input.IsKeyDown(sf::Key::Left))
         {
             cout<<"Left Key is down"<<endl;
@@ -25,6 +29,10 @@ int UpdateMenu(sf::RenderWindow &App)
         {
             App.Close();
             Running = false;
+        }
+        if(Input.IsKeyDown(sf::Key::Space))
+        {
+            return 1;
         }
         sf::Event Event;
         while (App.GetEvent(Event))
@@ -45,5 +53,25 @@ int UpdateMenu(sf::RenderWindow &App)
     }
     return -1;
 }
+
+int UpdateGame(sf::RenderWindow &App)
+{
+    bool Running = true;
+
+    const sf::Input& Input = App.GetInput();
+
+    Node Player;
+    Player.CreateNode(200,200,50,50,sf::Color(0,255,0));
+    while(Running)
+    {
+            //sf::Shape::Rectangle(0,50,100,100,sf::Color(150, 85, 85),5.f,sf::Color(150, 0, 0));
+        App.Clear();
+        App.Draw(Player.Shape);
+        App.Display();
+
+    }
+    return 0;
+}
+
 
 #endif // GAME_HPP

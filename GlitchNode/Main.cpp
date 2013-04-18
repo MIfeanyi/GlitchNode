@@ -20,6 +20,7 @@ int main(int argc, char *argv[])
                 State = UpdateMenu(App);
                 break;
             case Game:
+                State = UpdateGame(App);
                 break;
             case Options:
                 break;
