@@ -91,7 +91,17 @@ int UpdateGame(sf::RenderWindow &App)
         {
             Player.Move(0, Player.Speed.y);
         }
+        sf::Event Event;
+        while (App.GetEvent(Event))
+        {
+            // Close window : exit
+            if (Event.Type == sf::Event::Closed)
+            {
+                App.Close();
+                Running = false;
+            }
 
+        }
         App.Clear();
         Player.Draw(App);
         App.Display();

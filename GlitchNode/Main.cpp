@@ -10,7 +10,8 @@ int main(int argc, char *argv[])
     bool Running = true;
     int State = 0;
 
-    sf::RenderWindow App(sf::VideoMode::GetMode(0), "Arc Defense",  sf::Style::Fullscreen);
+    //sf::RenderWindow App(sf::VideoMode::GetMode(0), "Arc Defense",  sf::Style::Fullscreen);
+     sf::RenderWindow App(sf::VideoMode(800, 600), "Glitch Node");
 
     while(Running)
     {
