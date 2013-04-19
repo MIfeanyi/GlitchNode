@@ -62,15 +62,42 @@ int UpdateGame(sf::RenderWindow &App)
 
     Node Player;
     Player.CreateNode(200,200,50,50,sf::Color(0,255,0));
+    Player.OffsetSubNodes(0,10);
+    Player.Speed.x = 5;
+    Player.Speed.y = 5;
+
     while(Running)
     {
-            //sf::Shape::Rectangle(0,50,100,100,sf::Color(150, 85, 85),5.f,sf::Color(150, 0, 0));
+        if(Input.IsKeyDown(sf::Key::Escape))
+        {
+            App.Close();
+            Running = false;
+            return -1;
+        }
+
+        if(Input.IsKeyDown(sf::Key::Right))
+        {
+            Player.Move(Player.Speed.x, 0);
+        }
+        if(Input.IsKeyDown(sf::Key::Left))
+        {
+            Player.Move(Player.Speed.x * -1, 0);
+        }
+        if(Input.IsKeyDown(sf::Key::Up))
+        {
+            Player.Move(0, Player.Speed.y * -1);
+        }
+        if(Input.IsKeyDown(sf::Key::Down))
+        {
+            Player.Move(0, Player.Speed.y);
+        }
+
         App.Clear();
-        App.Draw(Player.Shape);
+        Player.Draw(App);
         App.Display();
 
     }
-    return 0;
+    return -1;
 }
 
 
